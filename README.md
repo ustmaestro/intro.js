@@ -1,3 +1,28 @@
+CHANGE LOG
+
+1. add tooltip distance option - distance betwen highlight and tooltip in case these is needed or for other purposes
+2. add elements padding option - hihglight and tooltip padding if more padding is needed
+3. add highlight style option - default, square, circle (highlight in diferrent styles: circle around element, square around element or default)
+4. add data-style attribute - for inline highlight style option
+5. add posibility of change the steps number container (highlight or tooltip) - where step number will be shown on highlight or tooltip
+6. better tooltip positions (more futures) - top, top-middle, top-right, 
+                                                            right, right-middle, right-bottom, 
+                                                            bottom, bootom-middle, bottom-right
+                                                            left, left-middle, left-right
+
+   There was only: top, right, bottom and left
+   Now we cover all posible positions
+
+7. changed tooltip referance from element to highlight - place tooltip around highlight not around highlighted element
+   
+    In case of circle, square or if we setup padding - we need that
+
+8. add onbeforestart callback - callback before plugin start in case you need to do stufs before the plugin starts
+
+TODO: improve auto position
+
+<image src="https://www.flugo.ro/js/intro/img/intro-demo.png">
+
 # Intro.js
 
 > Better introductions for websites and features with a step-by-step guide for your projects.
