@@ -23,14 +23,27 @@ TODO: improve auto position
 
 EXAMPLE OF USE
 
-$(document).ready(function(){
+```javascript
+   $(document).ready(function(){
 		introJs().setOptions({'skipLabel': 'Renunță','prevLabel': '&larr; Înapoi','nextLabel': 'Înainte &rarr;','doneLabel': 'Sfirșit', 'tooltipPosition': 'auto', 'helperLayerStyle': 'circle',  
 		'positionPrecedence': [ 'top-middle', 'bottom-middle', 'right-middle', 'left-middle', 'top', 'top-right', 'bottom',  'bottom-right', 'right', 'right-bottom', 'left', 'left-bottom'],
 		'elementsPadding': 10, 'tooltipDistance':20,'layerStepNumbers':'tooltip' }).start();
 
-});
+   });
 
-<image src="https://www.flugo.ro/js/intro/img/intro-demo.png">
+````
+<p align="center">
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo.png" alt="introjs-demo" >
+</p>
+
+<p align="center">
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-1.png" alt="introjs-demo" >
+</p>
+
+<p align="center">
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-2.png" alt="introjs-demo" >
+</p>
+
 
 # Intro.js
 
