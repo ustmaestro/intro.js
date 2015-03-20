@@ -63,6 +63,11 @@ tr.introjs-showElement > th {
           transition: all 0.3s ease-out;
 }
 
+
+.introjs-helperStyle-square{border-radius:0;}
+.introjs-helperStyle-circle{border-radius:50%;}
+
+
 .introjs-tooltipReferenceLayer {
   position: absolute;
   z-index: 10000000;
@@ -150,9 +155,17 @@ tr.introjs-showElement > th {
   border-bottom-color:transparent;
   border-left-color:white;
 }
-.introjs-arrow.right-bottom {
-  bottom:10px;
+.introjs-arrow.right-middle{
   right: -10px;
+  top: 50%;
+  border-top-color:transparent;
+  border-right-color:transparent;
+  border-bottom-color:transparent;
+  border-left-color:white;
+}
+.introjs-arrow.right-bottom {
+  right: -10px;
+  bottom: 10px;
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:transparent;
@@ -160,6 +173,22 @@ tr.introjs-showElement > th {
 }
 .introjs-arrow.bottom {
   bottom: -10px;
+  border-top-color:white;
+  border-right-color:transparent;
+  border-bottom-color:transparent;
+  border-left-color:transparent;
+}
+.introjs-arrow.bottom-middle{
+  bottom: -10px;
+  left: 50%;
+  border-top-color:white;
+  border-right-color:transparent;
+  border-bottom-color:transparent;
+  border-left-color:transparent;
+}
+.introjs-arrow.bottom-right{
+  bottom: -10px;
+  right: 10px;
   border-top-color:white;
   border-right-color:transparent;
   border-bottom-color:transparent;
@@ -173,9 +202,17 @@ tr.introjs-showElement > th {
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
+.introjs-arrow.left-middle {
+  left: -10px;
+  top: 50%;
+  border-top-color:transparent;
+  border-right-color:white;
+  border-bottom-color:transparent;
+  border-left-color:transparent;
+}
 .introjs-arrow.left-bottom {
   left: -10px;
-  bottom:10px;
+  bottom: 10px;
   border-top-color:transparent;
   border-right-color:white;
   border-bottom-color:transparent;

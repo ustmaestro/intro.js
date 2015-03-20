@@ -500,7 +500,6 @@
 			
 			
 			case 'right':
-			console.log(targetOffset);
 				tooltipLayer.style.left = (targetOffset.width + 10 + this._options.tooltipDistance) + 'px';
 				if ((targetOffset.top + tooltipOffset.height) > windowSize.height) {
 					// In this case, right would have fallen below the bottom of the screen.
