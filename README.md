@@ -33,15 +33,15 @@ EXAMPLE OF USE
 
 ````
 <p align="center">
-<image src="https://github.com/ustmaestro/intro.js/img/intro-demo.png" alt="introjs-demo" >
+<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo.png" alt="introjs-demo" >
 </p>
 
 <p align="center">
-<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-1.png" alt="introjs-demo" >
+<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo-2.png" alt="introjs-demo-1" >
 </p>
 
 <p align="center">
-<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-2.png" alt="introjs-demo" >
+<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo-3.png" alt="introjs-demo-2" >
 </p>
 
 
