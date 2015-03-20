@@ -21,6 +21,15 @@ CHANGE LOG
 
 TODO: improve auto position
 
+EXAMPLE OF USE
+
+$(document).ready(function(){
+		introJs().setOptions({'skipLabel': 'Renunță','prevLabel': '&larr; Înapoi','nextLabel': 'Înainte &rarr;','doneLabel': 'Sfirșit', 'tooltipPosition': 'auto', 'helperLayerStyle': 'circle',  
+		'positionPrecedence': [ 'top-middle', 'bottom-middle', 'right-middle', 'left-middle', 'top', 'top-right', 'bottom',  'bottom-right', 'right', 'right-bottom', 'left', 'left-bottom'],
+		'elementsPadding': 10, 'tooltipDistance':20,'layerStepNumbers':'tooltip' }).start();
+
+});
+
 <image src="https://www.flugo.ro/js/intro/img/intro-demo.png">
 
 # Intro.js
