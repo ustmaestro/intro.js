@@ -49,7 +49,7 @@
 			/* CSS class that is added to the helperLayer */
 			highlightClass: '',
 			/* Style for helper layer*/
-			helperLayerStyle: 'default',  // square, circle
+			helperLayerStyle: 'default',  // square, circle, diamond
 			/* Close introduction when pressing Escape button? */
 			exitOnEsc: true,
 			/* Close introduction when clicking on overlay layer? */
@@ -62,6 +62,8 @@
 			keyboardNavigation: true,
 			/* Show tour control buttons? */
 			showButtons: true,
+			/* Show tour close button? */
+			showCloseButton: true,
 			/* Show tour bullets? */
 			showBullets: true,
 			/* Show tour progress? */
@@ -204,7 +206,7 @@
 			//then, start the show
 			_nextStep.call(self);
 
-			var skipButton     = targetElm.querySelector('.introjs-skipbutton'),
+			var skipButton = targetElm.querySelector('.introjs-skipbutton'),
 			nextStepButton = targetElm.querySelector('.introjs-nextbutton');
 
 			self._onKeyDown = function(e) {
@@ -690,7 +692,7 @@
 	*/
 	function _setHelperLayerPosition(helperLayer) {
 		if (helperLayer) {
-			var layerWidth=0, layerHeight=0, layerTop=0, layerLeft=0, layerStyle = '';
+			var layerWidth=0, layerHeight=0, layerTop=0, layerLeft=0, layerVisualStyle = '', extraCssStyle = '';
 			
 			//prevent error when `this._currentStep` in undefined
 			if (!this._introItems[this._currentStep]) return;
@@ -704,12 +706,12 @@
 			}
 			
 			if (typeof (currentElement.helperLayerStyle) === 'string')			 
-				layerStyle = currentElement.helperLayerStyle;
+				layerVisualStyle = currentElement.helperLayerStyle;
 			else 
 				if(typeof (this._options.helperLayerStyle) === 'string') 
-					layerStyle = this._options.helperLayerStyle;
+					layerVisualStyle = this._options.helperLayerStyle;
 
-			switch(layerStyle){
+			switch(layerVisualStyle){
 				// style square box around
 				case 'square':
 					if(elementOffset.width > elementOffset.height){ // if width > height
@@ -736,6 +738,16 @@
 						layerHeight = layerDiagonal + widthHeightPadding + this._options.elementsPadding;
 						layerTop 	= elementOffset.top - (layerDiagonal - elementOffset.height) / 2 - widthHeightPadding / 2 - this._options.elementsPadding / 2;
 						layerLeft 	= elementOffset.left - (layerDiagonal - elementOffset.width) / 2 - widthHeightPadding / 2 - this._options.elementsPadding / 2;
+						extraCssStyle = '-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;';
+				break
+				// style diamond box around
+				case 'diamond': // set rotate 45 deg in css
+					var layerDiagonal = Math.sqrt(Math.pow(elementOffset.width,2)+Math.pow(elementOffset.height,2));
+						layerWidth 	= layerDiagonal + widthHeightPadding + this._options.elementsPadding;
+						layerHeight = layerDiagonal + widthHeightPadding + this._options.elementsPadding;
+						layerTop 	= elementOffset.top - (layerDiagonal - elementOffset.height) / 2 - widthHeightPadding / 2 - this._options.elementsPadding / 2;
+						layerLeft 	= elementOffset.left - (layerDiagonal - elementOffset.width) / 2 - widthHeightPadding / 2 - this._options.elementsPadding / 2;						
+						extraCssStyle = '-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform: rotate(45deg);filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5);';	
 				break
 				// style default box 
 				case 'default':
@@ -746,15 +758,14 @@
 					layerLeft 	= elementOffset.left - widthHeightPadding / 2 - this._options.elementsPadding / 2;
 				break
 			}
-			
 			//set new position to helper layer
 			helperLayer.setAttribute('style', 
 										'width:'  + layerWidth 	+ 'px;' +
 										'height:' + layerHeight + 'px;' +
 										'top:'    + layerTop 	+ 'px;' +
-										'left:'   + layerLeft 	+ 'px;'
+										'left:'   + layerLeft 	+ 'px;' + 
+										extraCssStyle
 									);
-		
 		}
 	}
 
@@ -815,9 +826,9 @@
 
 		if (oldHelperLayer != null) {
 			var oldHelperNumberLayer = oldReferenceLayer.querySelector('.introjs-helperNumberLayer'),
-				oldtooltipLayer      = oldReferenceLayer.querySelector('.introjs-tooltiptext'),
+				oldTooltipLayer      = oldReferenceLayer.querySelector('.introjs-tooltiptext'),
 				oldArrowLayer        = oldReferenceLayer.querySelector('.introjs-arrow'),
-				oldtooltipContainer  = oldReferenceLayer.querySelector('.introjs-tooltip'),
+				oldTooltipContainer  = oldReferenceLayer.querySelector('.introjs-tooltip'),
 				skipTooltipButton    = oldReferenceLayer.querySelector('.introjs-skipbutton'),
 				prevTooltipButton    = oldReferenceLayer.querySelector('.introjs-prevbutton'),
 				nextTooltipButton    = oldReferenceLayer.querySelector('.introjs-nextbutton');
@@ -825,8 +836,8 @@
 			//update or reset the helper highlight class
 			oldHelperLayer.className = highlightClass;
 			//hide the tooltip
-			oldtooltipContainer.style.opacity = 0;
-			oldtooltipContainer.style.display = "none";
+			oldTooltipContainer.style.opacity = 0;
+			oldTooltipContainer.style.display = "none";
 
 			if (oldHelperNumberLayer != null) {
 				var lastIntroItem = this._introItems[(targetElement.step - 2 >= 0 ? targetElement.step - 2 : 0)];
@@ -861,12 +872,12 @@
 				oldHelperNumberLayer.innerHTML = targetElement.step;
 			}
 			//set current tooltip text
-			oldtooltipLayer.innerHTML = targetElement.intro;
+			oldTooltipLayer.innerHTML = targetElement.intro;
 			//set the tooltip position
-			oldtooltipContainer.style.display = "block";
+			oldTooltipContainer.style.display = "block";
 			
 			// changed tooltip refernce element (from target element to helper layer)
-			_placeTooltip.call(self, oldHelperLayer, oldtooltipContainer, oldArrowLayer, oldHelperNumberLayer);
+			_placeTooltip.call(self, oldHelperLayer, oldTooltipContainer, oldArrowLayer, oldHelperNumberLayer);
 
 			//change active bullet
 			oldReferenceLayer.querySelector('.introjs-bullets li > a.active').className = '';
@@ -875,7 +886,7 @@
 			oldReferenceLayer.querySelector('.introjs-progress .introjs-progressbar').setAttribute('style', 'width:' + _getProgress.call(self) + '%;');
 
 			//show the tooltip
-			oldtooltipContainer.style.opacity = 1;
+			oldTooltipContainer.style.opacity = 1;
 			if (oldHelperNumberLayer) oldHelperNumberLayer.style.opacity = 1;
 
 			//reset button focus
@@ -1010,15 +1021,13 @@
 			skipTooltipButton.href = 'javascript:void(0);';
 			skipTooltipButton.innerHTML = this._options.skipLabel;
 
-			skipTooltipButton.onclick = function() {
+			skipTooltipButton.onclick = function() {						
 				if (self._introItems.length - 1 == self._currentStep && typeof (self._introCompleteCallback) === 'function') {
 					self._introCompleteCallback.call(self);
 				}
-
 				if (self._introItems.length - 1 != self._currentStep && typeof (self._introExitCallback) === 'function') {
 					self._introExitCallback.call(self);
 				}
-
 				_exitIntro.call(self, self._targetElement);
 			};
 
@@ -1030,7 +1039,21 @@
 				buttonsLayer.appendChild(nextTooltipButton);
 			}
 
-			tooltipLayer.appendChild(buttonsLayer);
+			tooltipLayer.appendChild(buttonsLayer);			
+					
+			// add close button
+			if(this._options.showCloseButton){				
+				var closeTooltipButton = document.createElement('span');
+					closeTooltipButton.className = 'introjs-closebutton';
+					closeTooltipButton.innerHTML = '<i class="fa fa-times"></i>';
+					closeTooltipButton.onclick = function(){
+						if ((self._introExitCallback) === 'function') {
+							self._introExitCallback.call(self);
+						}
+						_exitIntro.call(self, self._targetElement);
+					};				
+				tooltipLayer.appendChild(closeTooltipButton);
+			}
 
 			// changed tooltip refernce element (from target element to helper layer)
 			_placeTooltip.call(self, referenceLayer, tooltipLayer, arrowLayer, helperNumberLayer);

@@ -64,9 +64,13 @@ tr.introjs-showElement > th {
 }
 
 
-.introjs-helperStyle-square{border-radius:0;}
-.introjs-helperStyle-circle{border-radius:50%;}
-
+.introjs-helperStyle-diamond,
+.introjs-helperStyle-square{
+  border-radius:0;
+}
+.introjs-helperStyle-circle{
+  border-radius:50%;
+}
 
 .introjs-tooltipReferenceLayer {
   position: absolute;
@@ -260,8 +264,8 @@ tr.introjs-showElement > th {
   background-color: #ececec;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
   background-image: -moz-linear-gradient(#f4f4f4, #ececec);
-  background-image: -o-linear-gradient(#f4f4f4, #ececec);
-  background-image: linear-gradient(#f4f4f4, #ececec);
+  background-image:   -o-linear-gradient(#f4f4f4, #ececec);
+  background-image:      linear-gradient(#f4f4f4, #ececec);
   -webkit-background-clip: padding;
   -moz-background-clip: padding;
   -o-background-clip: padding-box;
@@ -285,8 +289,8 @@ tr.introjs-showElement > th {
 .introjs-button:active {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ececec), to(#f4f4f4));
   background-image: -moz-linear-gradient(#ececec, #f4f4f4);
-  background-image: -o-linear-gradient(#ececec, #f4f4f4);
-  background-image: linear-gradient(#ececec, #f4f4f4);
+  background-image:   -o-linear-gradient(#ececec, #f4f4f4);
+  background-image:      linear-gradient(#ececec, #f4f4f4);
 }
 
 /* overrides extra padding on button elements in Firefox */
@@ -321,6 +325,37 @@ tr.introjs-showElement > th {
   background-color: #f4f4f4;
   background-image: none;
   text-decoration: none;
+}
+
+.introjs-closebutton {
+  cursor:pointer;
+  position:absolute;
+  top:-16px;
+  right:-16px;
+  z-index:9999999999!important;
+  padding:2px;
+  font-size:13px;
+  color:#fff;
+  text-align:center;
+  background:#ff3019;
+  background:-webkit-linear-gradient(top,#ff3019 0,#cf0404 100%);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ff3019),color-stop(100%,#cf0404));
+  background:-moz-linear-gradient(top,#ff3019 0,#cf0404 100%);
+  background: -ms-linear-gradient(top,#ff3019 0,#cf0404 100%);
+  background:  -o-linear-gradient(top,#ff3019 0,#cf0404 100%);
+  background:     linear-gradient(to bottom,#ff3019 0,#cf0404 100%);
+  width:20px;
+  height:20px;
+  line-height:20px;
+  border:3px solid white;
+  border-radius:50%;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3019',endColorstr='#cf0404',GradientType=0);
+  filter:progid:DXImageTransform.Microsoft.Shadow(direction=135,strength=2,color=ff0000);
+  box-shadow:0 2px 5px rgba(0,0,0,.4);
+}
+
+.introjs-closebutton:hover {
+color:#626262;
 }
 
 .introjs-bullets {
