@@ -1,4 +1,8 @@
-CHANGE LOG
+CHANGE LOG 25-03-2015
+1. add diamond highlight style
+2. add close tooltip button option 
+
+CHANGE LOG 20-03-2015
 
 1. add tooltip distance option - distance betwen highlight and tooltip in case these is needed or for other purposes
 2. add elements padding option - hihglight and tooltip padding if more padding is needed
