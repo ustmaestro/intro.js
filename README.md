@@ -1,4 +1,5 @@
 CHANGE LOG 25-03-2015
+
 1. add diamond highlight style
 2. add close tooltip button option 
 
@@ -37,15 +38,15 @@ EXAMPLE OF USE
 
 ````
 <p align="center">
-<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo.png" alt="introjs-demo" >
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo.png" alt="introjs-demo" >
 </p>
 
 <p align="center">
-<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo-2.png" alt="introjs-demo-1" >
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-1.png" alt="introjs-demo" >
 </p>
 
 <p align="center">
-<img src="https://github.com/ustmaestro/intro.js/blob/master/img/intro-demo-3.png" alt="introjs-demo-2" >
+<image src="https://github.com/ustmaestro/intro.js/img/intro-demo-2.png" alt="introjs-demo" >
 </p>
 
 
